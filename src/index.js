@@ -12,7 +12,7 @@ const gallery = document.querySelector('.gallery');
 const loadMoreBtn = document.querySelector('.btn-load-more');
 let query = '';
 let page = 1;
-let simpleLightBox;
+const simpleLightBox = new SimpleLightbox('.gallery a');
 const perPage = 40;
 
 searchForm.addEventListener('submit', onSearchForm);
@@ -40,7 +40,7 @@ function onSearchForm(e) {
         alertNoImagesFound();
       } else {
         renderGallery(data.hits);
-        simpleLightBox = new SimpleLightbox('.gallery a').refresh();
+        simpleLightBox.refresh();
         alertImagesFound(data);
 
         if (data.totalHits > perPage) {
@@ -56,12 +56,12 @@ function onSearchForm(e) {
 
 function onLoadMoreBtn() {
   page += 1;
-  simpleLightBox.destroy();
+  // simpleLightBox.destroy();
 
   fetchImages(query, page, perPage)
     .then(({ data }) => {
       renderGallery(data.hits);
-      simpleLightBox = new SimpleLightbox('.gallery a').refresh();
+      simpleLightBox.refresh();
 
       const totalPages = Math.ceil(data.totalHits / perPage);
 
