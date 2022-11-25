@@ -1,7 +1,7 @@
 import './sass/index.scss';
-import { fetchImages } from './partials/js/fetch-images';
-import { renderGallery } from './partials/js/render-gallery';
-import { onScroll, onToTopBtn } from './partials/js/scroll';
+import { fetchImages } from './js/fetch-images';
+import { renderGallery } from './js/render-gallery';
+import { onScroll, onToTopBtn } from './js/scroll';
 import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 
